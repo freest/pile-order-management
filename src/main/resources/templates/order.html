@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/webjars/morrisjs/0.5.1/morris.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/metisMenu/1.1.3/metisMenu.min.css}" rel="stylesheet"/>
+    <link href="../static/sb-admin-2/css/sb-admin-2.css" th:href="@{sb-admin-2/css/sb-admin-2.css}" rel="stylesheet"/>
+    <link th:href="@{sb-admin-2/css/timeline.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awsome/4.4.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/datatables/1.10.10/media/css/dataTables.bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/datatables-responsive/1.0.6/css/dataTables.responsive.css}" rel="stylesheet"/>
+    <link th:href="@{dataTables/keyTable/css/keyTable.bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="wrapper">
+
+    <nav th:replace="/fragments/navbar :: navbar"/>
+    <div id="page-wrapper">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Приказ-наряд
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Work</th>
+                            <th th:each="date : ${order.dates}" th:text="${#calendars.format(date,'d')}"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="work : ${order.works}">
+                            <td th:text="${work}"></td>
+                            <td width="50px" th:each="date : ${order.dates}">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/metisMenu/1.1.3/metisMenu.min.js}"></script>
+<script th:src="@{/webjars/raphaeljs/2.1.4/raphael-min.js}"></script>
+<script th:src="@{/webjars/morrisjs/0.5.1/morris.min.js}"></script>
+
+<script th:src="@{/webjars/datatables/1.10.10/media/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/webjars/datatables/1.10.10/media/js/dataTables.bootstrap.min.js}"></script>
+<script th:src="@{sb-admin-2/js/sb-admin-2.js}"></script>
+
+<script th:src="@{dataTables/keyTable/js/dataTables.keyTable.min.js}"></script>
+
+<script>
+    var t;
+    $('td').attr("contentEditable", "true")
+    $(document).ready(function () {
+        t = $('table').DataTable({
+            keys: true, dom: "rt", aaSorting: []/*, aoColumnDefs: [{aTargets:"_all","bSortable":false}]*/
+        });
+        t.on('key-focus', function (e, datatable, cell) {
+            $('.focus').focus();
+            range = document.createRange();
+            range.selectNodeContents($('.focus')[0]);
+            range.collapse(false);
+            sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        })
+                .on('key-blur', function (e, datatable, cell) {
+                    cell.data($(cell.node()).html())
+                })
+    });
+</script>
+</body>
+</html>

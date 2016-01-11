@@ -1,0 +1,15 @@
+package com.f3.pile.configuration;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@Configuration
+@EnableAutoConfiguration
+@EntityScan(basePackages = {"com.f3.pile.domain"})
+@EnableJpaRepositories(basePackages = {"com.f3.pile.repositories"})
+@EnableTransactionManagement
+public class RepositoryConfiguration {
+}
