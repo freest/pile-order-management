@@ -5,9 +5,9 @@ import com.f3.pile.repositories.ProjectRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ProjectService {
     private ProjectRepository projectRepository;
 

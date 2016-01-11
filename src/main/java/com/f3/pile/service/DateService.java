@@ -1,11 +1,11 @@
 package com.f3.pile.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
+@Service
 public class DateService {
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
     public Date parse(String dateString) {

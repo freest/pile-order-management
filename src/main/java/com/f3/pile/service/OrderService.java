@@ -4,9 +4,9 @@ import com.f3.pile.domain.Order;
 import com.f3.pile.domain.Project;
 import com.f3.pile.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class OrderService {
     private OrderRepository orderRepository;
 
