@@ -24,12 +24,12 @@ public class SampleController {
     @Autowired
     private NlsService nlsService;
 
-    @RequestMapping(value = "/building",params = "id")
+    @RequestMapping(value = "/project",params = "id")
     public ModelAndView building(@RequestParam("id") Integer id) {
-        ModelAndView modelAndView = new ModelAndView("building");
+        ModelAndView modelAndView = new ModelAndView("project");
         Project project = projectService.findById(id);
         modelAndView.addObject("nlsService", nlsService);
-        modelAndView.addObject("projects", projectService.listAllProjects());
+        modelAndView.addObject("project", project);
         modelAndView.addObject("foremans", employeeService.listAllEmployees());
         modelAndView.addObject("orders", orderService.listByProject(project));
         return modelAndView;

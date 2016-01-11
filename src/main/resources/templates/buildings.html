@@ -35,7 +35,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="project : ${projects}">
-                            <td><a th:href="@{/building.html(id=${project.id})}" th:text="${project.name}"/></td>
+                            <td><a th:href="@{/templates/project.html(id=${project.id})}" th:text="${project.name}"/></td>
                             <td><a th:if="${project.foreman != null}" th:href="@{/employee.html(id=${project.foreman.id})}" th:text="${project.foreman.lastName}"/></td>
                         </tr>
                         </tbody>
