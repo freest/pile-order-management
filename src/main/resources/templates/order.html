@@ -63,7 +63,7 @@
     var t;
     $('td').attr("contentEditable", "true")
     $(document).ready(function () {
-        t = $('table').DataTable({
+        $('table').DataTable({
             keys: true, dom: "rt", aaSorting: []/*, aoColumnDefs: [{aTargets:"_all","bSortable":false}]*/
         });
         t.on('key-focus', function (e, datatable, cell) {
