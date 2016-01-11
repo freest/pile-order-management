@@ -35,9 +35,9 @@ public class SampleController {
         return modelAndView;
     }
 
-    @RequestMapping("/buildings")
+    @RequestMapping("/projects")
     public ModelAndView buildings() {
-        ModelAndView modelAndView = new ModelAndView("buildings");
+        ModelAndView modelAndView = new ModelAndView("projects");
         modelAndView.addObject("nlsService", nlsService);
         modelAndView.addObject("foremans", employeeService.listAllEmployees());
         modelAndView.addObject("projects", projectService.listAllProjects());

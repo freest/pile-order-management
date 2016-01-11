@@ -35,4 +35,14 @@ public class ProjectController {
         projectService.saveProject(project);
         return project.getId().toString();
     }
+
+    @RequestMapping("/updateProject")
+    @ResponseBody
+    public String updateProject(@RequestParam Map<String, String> data) {
+        Project project = projectService.findById(Integer.valueOf(data.get("projectId")));
+        project.setName(data.get("name"));
+        project.setForeman(employeeService.findById(Integer.valueOf(data.get("foremanId"))));
+        projectService.saveProject(project);
+        return project.getId().toString();
+    }
 }
