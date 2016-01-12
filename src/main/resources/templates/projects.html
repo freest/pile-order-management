@@ -92,13 +92,22 @@
 <script th:src="@{dataTables/keyTable/js/dataTables.keyTable.min.js}"></script>
 
 <script>
+    var p;
     $(document).ready(function () {
         $("#createProject").click(function(){
-            $.ajax({url:"createProject",
-                data:{
+            $.ajax({
+                url:"saveProject",
+                type:"POST",
+                contentType: 'application/json',
+                data:JSON.stringify({
                     name:$("#projectName").val(),
-                    foremanId:$("#foremanId").val()}})
+                    foreman:{
+                        id: $("#foremanId").val(),
+                        version: 0
+                    }})})
                     .done(function(data) {
+                        console.log(data);
+                        p=data;
                         $('#createProjectModal').modal('hide')
                     })
         })

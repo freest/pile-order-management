@@ -11,10 +11,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -55,23 +52,9 @@ public class ProjectController {
         return modelAndView;
     }
 
-    @RequestMapping("/createProject")
+    @RequestMapping(value = "/saveProject", method = RequestMethod.POST)
     @ResponseBody
-    public String createProject(@RequestParam Map<String, String> data) {
-        Project project = new Project();
-        project.setName(data.get("name"));
-        project.setForeman(employeeService.findById(Integer.valueOf(data.get("foremanId"))));
-        projectService.saveProject(project);
-        return project.getId().toString();
-    }
-
-    @RequestMapping("/updateProject")
-    @ResponseBody
-    public String updateProject(@RequestParam Map<String, String> data) {
-        Project project = projectService.findById(Integer.valueOf(data.get("projectId")));
-        project.setName(data.get("name"));
-        project.setForeman(employeeService.findById(Integer.valueOf(data.get("foremanId"))));
-        projectService.saveProject(project);
-        return project.getId().toString();
+    public Project createProject(@RequestBody Project project) {
+        return projectService.saveProject(project);
     }
 }

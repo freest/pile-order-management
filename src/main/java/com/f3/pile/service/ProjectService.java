@@ -22,6 +22,12 @@ public class ProjectService {
     public Project findById(Integer id) { return projectRepository.findOne(id); }
 
     public Project saveProject(Project project) {
+        if(project.getId() != null) {
+            project.setVersion(projectRepository.findOne(project.getId()).getVersion());
+        }
+        if(project.getForeman().getId() == null) {
+            project.setForeman(null);
+        }
         return projectRepository.save(project);
     }
 }

@@ -173,13 +173,16 @@
         });
         $("#saveProject").click(function () {
             $.ajax({
-                url: "updateProject",
-                data: {
-                    projectId: $("#projectId").val(),
-                    name:      $("#projectName").val(),
-                    foremanId: $("#projectForemanId").val()
-                }
-            })
+                url:"saveProject",
+                type:"POST",
+                contentType: 'application/json',
+                data:JSON.stringify({
+                    id: $("#projectId").val(),
+                    name:$("#projectName").val(),
+                    foreman:{
+                        id: $("#projectForemanId").val(),
+                        version: 0
+                    }})})
         });
     });
 </script>
