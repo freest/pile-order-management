@@ -21,4 +21,11 @@ public class EmployeeService {
     public Iterable<Employee> listAllEmployees() { return employeeRepository.findAll(); }
 
     public Employee findById(Integer id) { return employeeRepository.findOne(id); }
+
+    public Employee saveEmployee(Employee employee) {
+        if (employee.getId() != null) {
+            employee.setVersion(employeeRepository.findOne(employee.getId()).getVersion());
+        }
+        return employeeRepository.save(employee);
+    }
 }
