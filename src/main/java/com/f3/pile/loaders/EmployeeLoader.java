@@ -23,20 +23,21 @@ public class EmployeeLoader implements ApplicationListener<ContextRefreshedEvent
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Employee employee = new Employee();
-        employee.setLastName("Лукьянчук");
-        employee.setFirstName("Игорь");
+        employee.setLastName("Пупкин");
+        employee.setFirstName("Вася");
         employeeRepository.save(employee);
         log.info("Employee created: " + employee.getId());
 
         employee = new Employee();
-        employee.setLastName("Соколов");
-        employee.setFirstName("Дима");
+        employee.setLastName("Иванов");
+        employee.setFirstName("Иван");
+        employee.setPatronymic("Иванович");
         employeeRepository.save(employee);
         log.info("Employee created: " + employee.getId());
 
         employee = new Employee();
-        employee.setLastName("Касич");
-        employee.setFirstName("Коля");
+        employee.setLastName("Николаев");
+        employee.setFirstName("Валентин");
         employeeRepository.save(employee);
         log.info("Employee created: " + employee.getId());
     }
