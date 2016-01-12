@@ -30,7 +30,7 @@ public class OrderLoader  implements ApplicationListener<ContextRefreshedEvent> 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        Project project = projectRepository.findOne(1);
+        Project project = projectRepository.findAll().iterator().next();
         try {
             Order order = new Order();
             order.setName("1-1-1");

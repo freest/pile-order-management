@@ -37,7 +37,7 @@ public class OrderController {
 
     @RequestMapping("/createOrder")
     @ResponseBody
-    public String createProject(@RequestParam Map<String, String> data) {
+    public String createOrder(@RequestParam Map<String, String> data) {
         Order order = new Order();
         order.setName(data.get("name"));
         order.setProject(projectService.findById(Integer.valueOf(data.get("projectId"))));

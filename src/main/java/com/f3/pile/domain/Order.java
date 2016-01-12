@@ -8,7 +8,7 @@ import java.util.*;
 @Entity
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     @Version
     private Integer version;
