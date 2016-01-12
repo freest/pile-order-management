@@ -158,14 +158,22 @@
         });
         $("#createOrder").click(function () {
             $.ajax({
-                url: "createOrder",
-                data: {
-                    name:      $("#orderName").val(),
-                    projectId: $("#projectId").val(),
-                    foremanId: $("#foremanId").val(),
+                url: "saveOrder",
+                type: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    name: $("#orderName").val(),
+                    project: {
+                        id:$("#projectId").val(),
+                        version:-1
+                    },
+                    foreman: {
+                        id: $("#foremanId").val(),
+                        version:-1
+                    },
                     startDate: $("#startDate").val(),
-                    endDate:   $("#endDate").val()
-                }
+                    endDate: $("#endDate").val()
+                })
             })
                     .done(function (data) {
                         $('#createOrderModal').modal('hide')

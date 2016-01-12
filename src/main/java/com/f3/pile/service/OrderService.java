@@ -15,11 +15,24 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Iterable<Order> listByProject(Project project) { return orderRepository.findByProject(project); }
+    public Iterable<Order> listByProject(Project project) {
+        return orderRepository.findByProject(project);
+    }
 
     public Order findById(Integer id) {
         return orderRepository.findOne(id);
     }
 
-    public Order saveOrder(Order order) {return orderRepository.save(order); }
+    public Order saveOrder(Order order) {
+        if (order.getId() != null) {
+            order.setVersion(orderRepository.findOne(order.getId()).getVersion());
+        }
+        if(order.getProject().getId() == null) {
+            order.setProject(null);
+        }
+        if(order.getForeman().getId() == null) {
+            order.setForeman(null);
+        }
+        return orderRepository.save(order);
+    }
 }
