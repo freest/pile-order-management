@@ -62,7 +62,8 @@
                                 <tr class="form-group">
                                     <td th:text='${nlsService.getString("Foreman")}'></td>
                                     <td><select id="foremanId" class="form-control">
-                                        <option  th:each="foreman : ${foremans}" th:value="${foreman.id}" th:text="${foreman.lastName}"></option>
+                                        <option th:selected="${true}"></option>
+                                        <option th:each="foreman : ${foremans}" th:value="${foreman.id}" th:text="${foreman.lastName}"></option>
                                     </select></td>
                                 </tr>
                                 </tbody>

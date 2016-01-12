@@ -65,6 +65,7 @@
                                 <td th:text='${nlsService.getString("Foreman")}'></td>
                                 <td>
                                     <select id="projectForemanId" class="form-control">
+                                        <option th:selected="${project.foreman == null}"></option>
                                         <option th:each="foreman : ${foremans}" th:value="${foreman.id}"
                                                 th:text="${foreman.lastName}"
                                                 th:selected="${project.foreman != null and foreman.id == project.foreman.id}"></option>
@@ -109,6 +110,7 @@
                                 <td th:text='${nlsService.getString("Foreman")}'></td>
                                 <td>
                                     <select id="foremanId" class="form-control">
+                                        <option th:selected="${project.foreman == null}"></option>
                                         <option th:each="foreman : ${foremans}" th:value="${foreman.id}"
                                                 th:text="${foreman.lastName}"
                                                 th:selected="${project.foreman != null and foreman.id == project.foreman.id}"></option>
